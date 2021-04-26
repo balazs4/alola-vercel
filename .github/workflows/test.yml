@@ -1,6 +1,8 @@
 on:
-  deployment:
-    types: [published, created, edited]
+  workflow_run:
+    workflows: ["Vercel"]
+    types: 
+      - completed
 
 jobs:
   capture_vercel_preview_url:
