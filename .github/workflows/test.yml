@@ -5,4 +5,13 @@ jobs:
     if: github.event.deployment_status.state == 'success'
     runs-on: "ubuntu-latest"
     steps:
-      - run: echo ${{ github.event.deployment_status.target_url }}
+      - uses: actions/setup-node@v1
+
+      - run: |
+         sudo apt-get update > /dev/null
+         sudo apt-get install curl
+
+      - run: |
+        curl -Lis ${{ github.event.deployment_status.target_url }} | npx -q alola \
+          'status should be 200'
+         
