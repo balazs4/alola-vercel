@@ -1,0 +1,13 @@
+on:
+  environment:
+    types: [published, created, edited]
+
+jobs:
+  capture_vercel_preview_url:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: aaimio/vercel-preview-url-action@master
+        id: vercel_preview_url
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo ${{ steps.<step_id>.outputs.vercel_preview_url }}
