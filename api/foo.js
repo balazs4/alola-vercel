@@ -9,8 +9,6 @@ module.exports = (req, res) => {
       JSON.stringify({
         name,
         now: Date.now(),
-        foo: 'bar',
-        answer: 42,
       })
     );
 };
