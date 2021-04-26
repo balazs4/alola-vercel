@@ -12,6 +12,6 @@ jobs:
          sudo apt-get install curl
 
       - run: |
-        curl -Lis ${{ github.event.deployment_status.target_url }} | npx -q alola \
-          'status should be 200'
+         curl -Lis ${{ github.event.deployment_status.target_url }} | npx -q alola \
+           'status should be 200'
          
