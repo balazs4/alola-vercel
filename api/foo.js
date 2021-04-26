@@ -7,7 +7,7 @@ module.exports = (req, res) => {
     })
     .end(
       JSON.stringify({
-        name,
+        name: name.toLowerCase(),
         now: Date.now(),
       })
     );
