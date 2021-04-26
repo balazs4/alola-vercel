@@ -1,0 +1,17 @@
+on: deployment_status
+
+jobs:
+  test:
+    if: github.event.deployment_status.state == 'success'
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/setup-node@v1
+      - run: |
+         curl -Lis "${{ github.event.deployment_status.target_url }}/api/foo?name=balazs4" \
+           | npx -q alola \
+           'status should be 200' \
+           'headers.x-alola-vercel should be yay' \
+           'headers.server should be Vercel' \
+           'body.name should be balazs4' \
+           'body.now should match ^\d{13}$'
+         
