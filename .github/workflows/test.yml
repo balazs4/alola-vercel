@@ -1,5 +1,5 @@
 on:
-  environment:
+  deployment_status:
     types: [published, created, edited]
 
 jobs:
@@ -7,7 +7,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: aaimio/vercel-preview-url-action@master
-        id: vercel_preview_url
+        id: deployments
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: echo ${{ steps.<step_id>.outputs.vercel_preview_url }}
+      - run: echo ${{ steps.deployments.outputs.vercel_preview_url }}
