@@ -1,5 +1,5 @@
 on:
-  deployment_status:
+  deployment:
     types: [published, created, edited]
 
 jobs:
