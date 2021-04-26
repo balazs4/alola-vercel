@@ -4,7 +4,6 @@ module.exports = (req, res) => {
     .writeHead(200, {
       'content-type': 'application/json',
       'x-alola-vercel': 'yay',
-      'x-alola-vercel-trigger': 'foobar',
     })
     .end(
       JSON.stringify({
