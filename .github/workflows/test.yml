@@ -8,7 +8,7 @@ jobs:
       - uses: actions/setup-node@v1
       - run: |
          curl -Lis "${{ github.event.deployment_status.target_url }}/api/foo?name=balazs4" \
-           | npx -q alola \
+           | npx -q alola 1>/dev/null \
            'status should be 200' \
            'headers.x-alola-vercel should be yay' \
            'headers.server should be Vercel' \
