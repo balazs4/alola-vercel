@@ -1,7 +1,9 @@
 export default function (req, event) {
-  console.log(req.url);
+  const url = new URL(req.url);
+  const name = url.searchParams.get('name') || 'friend';
+
   return new Response(
-    JSON.stringify({ name: 'friend'.toLowerCase(), now: Date.now() }),
+    JSON.stringify({ name: name.toLowerCase(), now: Date.now() }),
     { headers: { 'content-type': 'application/json', 'x-alola-vercel': 'yay' } }
   );
 }
