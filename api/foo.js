@@ -1,14 +1,9 @@
-module.exports = (req, res) => {
-  const { name = 'friend' } = req.query;
-  res
-    .writeHead(200, {
-      'content-type': 'application/json',
-      'x-alola-vercel': 'yay',
-    })
-    .end(
-      JSON.stringify({
-        name: name.toLowerCase(),
-        now: Date.now(),
-      })
-    );
-};
+export default function (req, event) {
+  console.log(JSON.stringify({ req, event }));
+  return new Response(
+    JSON.stringify({ name: 'friend'.toLowerCase(), now: Date.now() }),
+    { headers: { 'content-type': 'application/json', 'x-alola-vercel': 'yay' } }
+  );
+}
+
+export const config = { runtime: 'edge' };
