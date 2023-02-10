@@ -5,7 +5,9 @@ jobs:
     if: github.event.deployment_status.state == 'success'
     runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v3
+        with:
+          node-version: latest
       - run: |
          curl -Lis "${{ github.event.deployment_status.target_url }}/api/foo?name=balazs4" \
            | npx -q alola 1>/dev/null \
@@ -14,4 +16,3 @@ jobs:
            'headers.server should be Vercel' \
            'body.name should be balazs4' \
            'body.now should match ^\d{13}$'
-         
